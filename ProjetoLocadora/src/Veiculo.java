@@ -12,17 +12,15 @@ abstract class Veiculo {
 
     //Atributos protegidos -> Encapsulamentos
     private String marca;
-    private String modelo;
+    private final String modelo;
     private int ano;
-    private String placa;
     private double precoBase;
 
     //Construtor da classe
-    public Veiculo(String marca, String modelo, int ano, String placa, double precoBase) {
+    public Veiculo(String marca, String modelo, int ano, double precoBase) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
-        this.placa = placa;
         this.precoBase = precoBase;
     }
 
@@ -33,16 +31,16 @@ abstract class Veiculo {
     // MODIFICADORES VIA GETTERS E SETTERS
     //O SETTER DE PRECOBASE TEM VALIDAÇÃO: NÃO ACEITA VALORES NEGATIVOS
 
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
     public String getMarca () {
         return marca;
     }
 
     public String getModelo() {
         return modelo;
-    }
-
-    public String getPlaca() {
-        return placa;
     }
 
     public int getAno() {
@@ -64,22 +62,5 @@ abstract class Veiculo {
 
     public String toString() {
         return marca + " " + modelo + " (" + ano + ")";
-    }
-}
-
-// PILAR 3 - HERANÇA
-// Carro e Moto herdam tudo de Veiculo, mas cada um adiciona
-// seus próprios atributos e implementa calcularDiaria() do seu jeito.
-
-//CARRO -> qtdPortas (atributo)
-// método calcularDiaria -> se qtdPortas >= 4 então acréscimo de 20%
-
-
-abstract class Carro extends Veiculo {
-    private int quantidadePortas;
-
-    public Carro(String marca, String modelo, int ano, String placa, double precoBase, int quantidadePortas) {
-        super(marca, modelo, ano, placa, precoBase);
-        this.quantidadePortas = quantidadePortas;
     }
 }
